@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import { mount } from "@cypress/react";
 import VideoPlayer from "@/components/player/VideoPlayer";
-import { COMPONENT_TEST_VIDEO, TEST_VIDEO_URL } from "@/constants/test.data";
+import { COMPONENT_TEST_VIDEO } from "@/constants/test.data";
 
 Cypress.on('uncaught:exception', (err) => {
   if (err.name === 'AbortError') {
@@ -12,10 +12,9 @@ Cypress.on('uncaught:exception', (err) => {
 describe("VideoPlayer Component", () => {
   beforeEach(() => {
     mount(<VideoPlayer src={COMPONENT_TEST_VIDEO} title="Test Video" shortDescription="Sample video" />);
-    cy.get('video') // Select the video element
-      .should('be.visible') // Ensure the video is visible
+    cy.get('video') 
+      .should('be.visible') 
       .then(($video) => {
-        // Wait for the video to load
         cy.wrap($video).should('have.prop', 'readyState', 4); // 4 means HAVE_ENOUGH_DATA
       });
 
@@ -68,26 +67,22 @@ describe("VideoPlayer Component", () => {
   });
 
   it("should update the video current time when the slider is clicked", () => {
-    cy.get("video").click(); // Ensure the video is playing
-    cy.wait(2000); // Wait for the video to play for a bit
+    cy.get("video").click(); 
+    cy.wait(2000); 
   
-    // Ensure controls are visible
     cy.get("#video-player-container").trigger("mouseenter");
-  
-    // Get the initial current time of the video
+
     cy.get("video").then(($video) => {
       const initialTime = $video[0].currentTime;
       const videoDuration = $video[0].duration;
-      const newTime = initialTime + 10; // Move the slider forward by 10 seconds
+      const newTime = initialTime + 10;
   
-      // Set the slider value directly
       cy.get("#video-player-controls-timeline")
-        .invoke("val", newTime) // Set the slider value
-        .trigger("input"); // Trigger the input event to update the video
+        .invoke("val", newTime) 
+        .trigger("input"); 
   
-      // Verify that the video's current time has been updated
       cy.get("video").should(($video) => {
-        expect($video[0].currentTime).to.be.closeTo(newTime, 1); // Allow a small margin of error
+        expect($video[0].currentTime).to.be.closeTo(newTime, 1); 
       });
     });
   });
