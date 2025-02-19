@@ -1,0 +1,61 @@
+name: Run Tests for Application
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+
+jobs:
+  code-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ✅  
+        uses: actions/checkout@v3
+        with:
+           ref: ${{ github.event.inputs.branch }}
+           fetch-depth: 0
+
+      - name: Save Current Commit Hash 📝
+        id: save_commit
+        run: echo "COMMIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
+      - name: Build Docker Image 🐋 
+        run: docker build -t web-app . 
+
+      - name: Run Docker Image 🚀
+        run: docker run --rm -d -p 3000:3000 -e PORT=3000 --name web-app web-app 
+
+      - name: Install dependencies on host machine 🛠️
+        run: |
+          npm install
+
+      - name: Run Unit Tests 🧪
+        run: npm run test -- --ci --coverage
+
+      - name: Run Component Tests 🧪
+        run: npm run cypress:component
+
+      # - name: Run End to End Tests 🧪
+      #   uses: cypress-io/github-action@v5
+
+      # - name: Rollback Code on Failure 🚨
+      #   if: failure()
+      #   run: |
+      #     echo "❌ Tests failed. Rolling back to the previous commit..."
+      #     git config --global user.name 'github-actions[bot]'
+      #     git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      #     git revert --no-edit HEAD
+      #     git push
+
+      - name: Cleanup Docker 🧹
+        if: always()
+        run: |
+          docker stop $(docker ps -q) || true
+          docker system prune -f || true

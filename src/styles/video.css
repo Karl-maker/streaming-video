@@ -1,0 +1,57 @@
+.video-container {
+    @apply relative w-full rounded-xl overflow-hidden;
+}
+  
+.video {
+    @apply w-full rounded-xl cursor-pointer;
+}
+  
+.video-overlay {
+    @apply absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-3 text-white;
+}
+  
+.video-info {
+    @apply mb-1;
+}
+  
+.video-info h2 {
+    @apply m-0 text-lg font-semibold;
+}
+  
+.video-info p {
+    @apply m-0 text-sm opacity-80;
+}
+  
+.video-controls {
+    @apply flex items-center justify-between mt-2;
+}
+  
+.video-slider {
+    @apply flex-1 mx-2 h-[2px] bg-white/30 appearance-none cursor-pointer;
+}
+  
+.video-slider::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, white var(--progress), rgba(255, 255, 255, 0.3) var(--progress));
+    @apply h-[2px];
+}
+  
+.video-slider::-webkit-slider-thumb {
+    @apply appearance-none w-0 h-0;
+}
+  
+.video-slider::-moz-range-progress {
+    @apply bg-white h-[2px];
+}
+  
+.video-slider::-moz-range-track {
+    @apply bg-white/30 h-[2px];
+}
+  
+.video-slider::-ms-fill-lower {
+    @apply bg-white;
+}
+  
+.video-slider::-ms-fill-upper {
+    @apply bg-white/30;
+}
+  
