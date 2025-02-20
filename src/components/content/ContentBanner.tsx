@@ -73,7 +73,7 @@ const ContentBanner = ({
                         <img 
                             src={content[selectedIndex]?.logoSrc ?? ""} 
                             alt={`${content[selectedIndex]?.title ?? 'Unknown'} Logo`}
-                            className="w-full h-auto object-contain mb-3 max-w-[30vw] md:max-w-[40vw]" 
+                            className="w-full h-auto object-contain mb-3 max-w-[40vw]" 
                         />
                  
                         {content[selectedIndex]?.tags && <div className="flex gap-1 mb-2">
