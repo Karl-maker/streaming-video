@@ -1,5 +1,6 @@
 /// <reference types="jest" />
 import secondsToMinutes from "@/utils/seconds.to.minutes.util";
+import { expect } from '@jest/globals';
 
 describe('secondsToMinutes', () => {
   it('should convert 0 seconds to "0:00"', () => {

@@ -1,5 +1,6 @@
 /// <reference types="jest" />
 import getAudioType from "@/utils/audio.type.util";
+import { expect } from '@jest/globals';
 
 describe('getAudioType', () => {
   it('should return "mp3" for mp3 audio files', () => {
