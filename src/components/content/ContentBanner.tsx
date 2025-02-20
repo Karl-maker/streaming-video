@@ -15,7 +15,7 @@ const ContentBanner = ({
     
     const videoRef = useRef<HTMLVideoElement>(null);
 
-    const toggleMute = () => {
+    const toggleMute = (): void => {
         if (videoRef.current) {
             videoRef.current.muted = !isMuted;
             setIsMuted(!isMuted);
@@ -45,25 +45,30 @@ const ContentBanner = ({
                                 playsInline 
                                 disableRemotePlayback
                             />
-                            {(!isVideoLoaded && (content[selectedIndex])) && ( 
+                            {(!isVideoLoaded && (content[selectedIndex])) && (<>
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img 
                                     id="content-banner-main-img"
                                     src={content[selectedIndex]?.imageSrc ?? ""}
                                     alt={content[selectedIndex]?.title ?? "No Banner Image"} 
                                     className="w-full h-full object-cover"
                                 />
+                                </>
                             )}
                         </>
                     ) : (
-                        <img 
+                        <>{content[selectedIndex]?.imageSrc && <img 
                             src={content[selectedIndex]?.imageSrc ?? ""}
                             alt={content[selectedIndex]?.title ?? "No Banner Image"} 
                             className="w-full h-full object-cover"
-                        />
+                            loading="lazy"
+                            onError={() => {}}
+                        />}</>
                     )}
                 </div>
 
                 <div className="absolute bottom-4 left-4 z-0 max-w-[30vw]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
                             src={content[selectedIndex]?.logoSrc ?? ""} 
                             alt={`${content[selectedIndex]?.title ?? 'Unknown'} Logo`}

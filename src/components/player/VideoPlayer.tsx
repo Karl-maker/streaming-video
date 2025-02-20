@@ -6,7 +6,6 @@ import secondsToMinutes from "@/utils/seconds.to.minutes.util";
 
 const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
   const [time, setTime] = useState({ elapsed: 0, duration: 0 });
   const [showControls, setShowControls] = useState(true);
   const hideTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -15,10 +14,8 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
     if (videoRef.current) {
       if (videoRef.current.paused) {
         videoRef.current.play();
-        setIsPlaying(true);
       } else {
         videoRef.current.pause();
-        setIsPlaying(false);
       }
     }
   };
