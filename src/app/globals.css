@@ -27,5 +27,12 @@ body {
   }
 }
 
+@layer components {
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+}
+
+
 
 

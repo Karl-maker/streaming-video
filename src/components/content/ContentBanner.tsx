@@ -44,6 +44,7 @@ const ContentBanner = ({
                                 onLoadedData={() => setIsVideoLoaded(true)} 
                                 playsInline 
                                 disableRemotePlayback
+                                controlsList="nodownload nofullscreen noremoteplayback"
                             />
                             {(!isVideoLoaded && (content[selectedIndex])) && (<>
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
