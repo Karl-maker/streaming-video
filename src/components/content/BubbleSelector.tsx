@@ -15,8 +15,8 @@ const BubbleSelector = ({ bubbles, onSelected, selectedIndex }: BubbleSelectorPa
                 <div
                     key={index}
                     onClick={() => handleBubbleClick(index)}
-                    className={`rounded-full bg-white flex items-center justify-center cursor-pointer transition-all duration-300 
-                                ${selectedIndex === index ? 'w-8' : 'w-2'} h-2`} 
+                    className={`rounded-full bg-black dark:bg-white flex items-center justify-center cursor-pointer transition-all duration-300 
+                    ${selectedIndex === index ? 'w-8' : 'w-3 md:w-2'} h-3 md:h-2`} 
                 >
                     {/* Optional: Add content inside the bubble if needed */}
                 </div>
