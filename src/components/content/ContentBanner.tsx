@@ -1,6 +1,6 @@
 "use client";
 
-import { ContentBannerParams } from "@/types/content.banner.types";
+import { ContentBannerParams, ContentBannerPreviewInput } from "@/types/content.banner.types";
 import { useRef, useState } from "react";
 import WatchNowButton from "./WatchNowButton";
 import BubbleSelector from "./BubbleSelector";
@@ -84,8 +84,8 @@ const ContentBanner = ({
 
             <div id='content-banner-action-section' className='p-4'>
                 {content[selectedIndex] && <WatchNowButton onClick = {
-                    () => {
-                        if(content[selectedIndex] && content[selectedIndex]?.onWatchNow) (content[selectedIndex] as any).onWatchNow(content[selectedIndex].id);
+                    () : void => {
+                        content[selectedIndex]?.onWatchNow?.(content[selectedIndex].id);
                     }
                 }/>}
             </div>
