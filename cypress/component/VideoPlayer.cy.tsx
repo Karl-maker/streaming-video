@@ -9,7 +9,7 @@ Cypress.on('uncaught:exception', (err) => {
   }
 });
 
-describe("VideoPlayer Component", () => {
+describe("VideoPlayer", () => {
   beforeEach(() => {
     mount(<VideoPlayer src={COMPONENT_TEST_VIDEO} title="Test Video" shortDescription="Sample video" />);
     cy.get('video') 

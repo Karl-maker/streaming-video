@@ -63,7 +63,7 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
   return (
     <div
       id="video-player-container"
-      className="relative w-full rounded-xl overflow-hidden"
+      className="relative w-full overflow-hidden"
       onMouseMove={resetHideControls}
       onMouseLeave={() => setShowControls(false)}
     >
@@ -76,7 +76,7 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
           setTime((prev) => ({ ...prev, duration: videoRef.current?.duration || 0 }))
         }
         onTimeUpdate={handleTimeUpdate}
-        className="w-full rounded-xl cursor-pointer"
+        className="w-full cursor-pointer"
       />
       {showControls && (
         <div id="video-player-overlay" className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-3 text-white">
