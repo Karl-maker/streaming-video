@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import getAudioType from "@/utils/audio.type.util";
 
 describe('getAudioType', () => {
