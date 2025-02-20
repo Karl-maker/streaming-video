@@ -1,6 +1,6 @@
 "use client";
 
-import { ContentBannerParams, ContentBannerPreviewInput } from "@/types/content.banner.types";
+import { ContentBannerParams } from "@/types/content.banner.types";
 import { useState } from "react";
 import WatchNowButton from "./WatchNowButton";
 import BubbleSelector from "./BubbleSelector";
