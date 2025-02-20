@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import secondsToMinutes from "@/utils/seconds.to.minutes.util";
 
 describe('secondsToMinutes', () => {
