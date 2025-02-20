@@ -55,16 +55,17 @@ export default function Home() {
     <div className="">
       <main className="">
         <ContentBanner content={[...item]} />
+          <div className="flex flex-col gap-4">
+            <VideoStrip 
+              videos={[...videos, ...videos, ...videos]} 
+              title="Featured"
+            />
 
-          <VideoStrip 
-            videos={[...videos, ...videos, ...videos]} 
-            title="Featured"
-          />
-
-          <VideoStrip 
-            videos={[...videos, ...videos, ...videos]} 
-            title="Documentation"
-          />
+            <VideoStrip 
+              videos={[...videos, ...videos, ...videos]} 
+              title="Documentation"
+            />
+          </div>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
 
