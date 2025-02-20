@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type ContentBannerPreviewInput = {
     id: string;
     logoSrc: string;
@@ -5,6 +7,8 @@ export type ContentBannerPreviewInput = {
     previewSrc?: string;
     description: string;
     title: string;
+    tags?: (string | ReactNode)[];
+    details?: string;
 
     onWatchNow?: (id: string) => void;
 }

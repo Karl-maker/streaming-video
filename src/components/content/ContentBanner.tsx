@@ -52,6 +52,7 @@ const ContentBanner = ({
                                     src={content[selectedIndex]?.imageSrc ?? ""}
                                     alt={content[selectedIndex]?.title ?? "No Banner Image"} 
                                     className="w-full h-full object-cover"
+                                    loading="lazy"
                                 />
                                 </>
                             )}
@@ -67,15 +68,36 @@ const ContentBanner = ({
                     )}
                 </div>
 
-                <div className="absolute bottom-4 left-4 z-0 max-w-[30vw]">
+                <div className="absolute bottom-4 left-4 z-0 max-w-[40vw]">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
                             src={content[selectedIndex]?.logoSrc ?? ""} 
                             alt={`${content[selectedIndex]?.title ?? 'Unknown'} Logo`}
-                            className="w-full h-auto object-contain mb-3 max-w-[30vw] md:max-w-[20vw]" 
+                            className="w-full h-auto object-contain mb-3 max-w-[30vw] md:max-w-[40vw]" 
                         />
-                        <div>
-                            <p className="text-xl font-medium hidden lg:block"> 
+                 
+                        {content[selectedIndex]?.tags && <div className="flex gap-1 mb-2">
+                            {content[selectedIndex]?.tags?.map((tag, index) => (
+                            <span 
+                                key={index} 
+                                className="px-2 py-1 text-sm font-large rounded-md bg-gray-900 text-white dark:text-gray-300 backdrop-blur-md self-center"
+                            >
+                                {tag}
+                            </span>
+                            ))}
+
+                        </div>}
+
+                        {content[selectedIndex]?.details && <div className='mb-5'>
+                                <p className="text-xs font-large">{content[selectedIndex]?.details}</p>
+                        </div>}
+
+                        <div className="hidden md:block">
+                            <p className="text-xl font-medium overflow-hidden text-ellipsis whitespace-pre-line" style={{
+                                display: "-webkit-box",
+                                WebkitBoxOrient: "vertical",
+                                WebkitLineClamp: 2
+                            }}>
                                 {content[selectedIndex]?.description ?? ""}
                             </p>
                         </div>

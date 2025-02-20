@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "next": "15.1.7",
