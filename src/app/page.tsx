@@ -1,9 +1,30 @@
 "use client"
 
 import ContentBanner from "@/components/content/ContentBanner";
+import VideoStrip from "@/components/content/VideoStrip";
 import { ContentBannerPreviewInput } from "@/types/content.banner.types";
 
 export default function Home() {
+  const videos = [
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-cottonbro-7792259.jpg"
+    },
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-lkloeppel-466685.jpg"
+    },
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-cottonbro-7792259.jpg"
+    },
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-lkloeppel-466685.jpg"
+    },
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-cottonbro-7792259.jpg"
+    },
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-lkloeppel-466685.jpg"
+    }
+  ]
   const item : ContentBannerPreviewInput[] = [
     {
       id: "32hd02y-1udh1-1d32fwe",
@@ -34,6 +55,16 @@ export default function Home() {
     <div className="">
       <main className="">
         <ContentBanner content={[...item]} />
+
+          <VideoStrip 
+            videos={[...videos, ...videos, ...videos]} 
+            title="Featured"
+          />
+
+          <VideoStrip 
+            videos={[...videos, ...videos, ...videos]} 
+            title="Documentation"
+          />
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
 
