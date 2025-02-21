@@ -27,7 +27,7 @@ const ContentBanner = ({
     return (
         <div id='content-banner-container'>
             <div id="content-banner-title-details" className="relative w-full">
-                <div id='content-banner-audio-button' className='absolute top-10 right-10 z-10 '>
+                <div id='content-banner-audio-button' className='absolute top-20 right-20 z-10 '>
                     {content[selectedIndex]?.previewSrc && <AudioButton isMuted={isMuted} toggleMute={toggleMute} />}
                 </div>
                 
