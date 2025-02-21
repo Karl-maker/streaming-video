@@ -58,6 +58,7 @@ export default function Home() {
       imageSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/thor-landscape.jpg",
       description: "Thor battles to save Earth and the Nine Realms from a dark force that predates the universe itself. Join him on a thrilling journey as he faces his most powerful enemy yet.",
       title: "Thor: The Dark World",
+      previewSrc: 'https://video-caribbean.s3.us-east-2.amazonaws.com/public/videos/Alone+in+New+York+_+Short+Film+(2018).mp4',
       tags: [
         'PG-13', 'CC', '4K'
       ],
