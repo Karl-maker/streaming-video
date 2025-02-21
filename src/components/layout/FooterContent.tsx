@@ -1,5 +1,4 @@
 import { FooterContentParams } from "@/types/footer.type";
-import Image from "next/image";
 
 const FooterContent = ({ companyName, links, address, logoSrc }: FooterContentParams) => {
   return (
