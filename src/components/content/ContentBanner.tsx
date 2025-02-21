@@ -68,12 +68,12 @@ const ContentBanner = ({
                     )}
                 </div>
 
-                <div className="absolute bottom-4 left-4 z-0 max-w-[40vw]">
+                <div className="absolute bottom-4 left-4 z-0 max-w-[50vw] md:max-w-[40vw]">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
                             src={content[selectedIndex]?.logoSrc ?? ""} 
                             alt={`${content[selectedIndex]?.title ?? 'Unknown'} Logo`}
-                            className="w-full h-auto object-contain mb-3 max-w-[40vw]" 
+                            className="w-full h-auto object-contain mb-3 max-w-[50vw] md:max-w-[40vw]" 
                         />
                  
                         {content[selectedIndex]?.tags && <div className="flex gap-1 mb-2">

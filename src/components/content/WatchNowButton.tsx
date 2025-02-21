@@ -6,7 +6,7 @@ const WatchNowButton = ({ onClick }: { onClick: () => void; }) => {
     return (
         <button 
             id='watch-now-button'
-            className="flex items-center bg-gray-500 text-white text-xl font-semibold py-4 px-7 rounded-lg shadow-lg hover:bg-white hover:text-black transition duration-300"
+            className="flex items-center bg-gray-500 text-white md:text-xl text-md font-semibold py-4 px-7 rounded-lg shadow-lg hover:bg-white hover:text-black transition duration-300"
             onClick={onClick}
             >
             <FaPlay className="mr-2" /> 
