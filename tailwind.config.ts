@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      height: {
+        145: '29.6rem', 
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

@@ -6,6 +6,7 @@ const VideoCard = ({ src, progress, tag }: VideoCardParams) => {
     return (
         <div className="relative w-80 h-44 rounded-xl overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-transparent dark:hover:border-white hover:shadow-md">
             {/* Video Thumbnail */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
                 src={src}
                 alt={`Video ${src}`}
