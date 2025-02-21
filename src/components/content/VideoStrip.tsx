@@ -1,6 +1,4 @@
 import { VideStripParams } from "@/types/video.strip.types";
-import VideoCard from "./VideoCard";
-import VideoTallCard from "./VideoTallCard";
 
 const VideoStrip = ({ children, title }: VideStripParams) => {
   return (
