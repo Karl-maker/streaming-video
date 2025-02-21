@@ -1,7 +1,7 @@
 import { VideoTallCardParams } from "@/types/video.card.types";
 import WatchNowButton from "./WatchNowButton";
 
-const VideoTallCard = ({ posterSrc, logoSrc, tag, landscapeSrc }: VideoTallCardParams) => {
+const VideoTallCard = ({ posterSrc, logoSrc, tag, landscapeSrc, detail, badges }: VideoTallCardParams) => {
     return (
         <div className="relative w-80 h-145 rounded-xl overflow-hidden transition-width duration-300 ease-in-out group sm:hover:w-[50rem] border-2 border-transparent hover:shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -15,9 +15,9 @@ const VideoTallCard = ({ posterSrc, logoSrc, tag, landscapeSrc }: VideoTallCardP
             )}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
+                loading="lazy"
                 src={posterSrc}
                 alt={`Video ${posterSrc}`}
-                loading="lazy"
                 className="w-full h-full object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-70 sm:group-hover:opacity-100" // Keep visible on small screens and fade on hover for larger screens
             />
 
@@ -35,8 +35,23 @@ const VideoTallCard = ({ posterSrc, logoSrc, tag, landscapeSrc }: VideoTallCardP
                 <img
                     src={logoSrc} 
                     alt="Overlay"
+                    loading="lazy"
                     className="w-full h-auto object-contain mb-4" 
                 />
+                {badges && <div className="flex gap-1 mb-2">
+                    {badges?.map((badge, index) => (
+                        <span 
+                            key={index} 
+                            className="px-2 py-1 text-sm font-large rounded-md bg-white dark:bg-gray-900 text-black dark:text-white dark:text-gray-300 backdrop-blur-md self-center"
+                        >
+                            {badge}
+                        </span>
+                    ))}
+
+                </div>}
+                {detail && <div className='mb-5'>
+                        <p className="text-xs font-large text-white">{detail}</p>
+                </div>}
                 <WatchNowButton onClick={function (): void {
                     throw new Error("Function not implemented.");
                 }} />

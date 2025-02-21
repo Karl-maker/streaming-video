@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type VideoCardParams = {
     src: string;
     progress?: number;
@@ -9,4 +11,6 @@ export type VideoTallCardParams = {
     landscapeSrc: string;
     tag?: string;
     logoSrc: string;
+    detail?: string;
+    badges?: (string | ReactNode)[];
 }

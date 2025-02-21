@@ -12,17 +12,29 @@ export default function Home() {
       src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/naruto-poster.jpg",
       logoSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/naruto-logo.png",
       landscapeSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/naruto-landscape.png",
-      tag: 'NEW EPISODES'
+      tag: 'NEW EPISODES',
+      detail: '2024 • Action, Fantasy • 25m',
+      badges: [
+        'PG-13', 'CC', 'HD'
+      ]
     },
     {
       src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-poster.webp",
       logoSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-logo.svg.png",
       landscapeSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-landscape.jpg",
+      detail: '2023 • Action, Crime • 2hr 10m',
+      badges: [
+        '16+', 'CC', '4K'
+      ]
     },
     {
       src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/thor-poster.jpg",
       logoSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/thor-logo.webp",
       landscapeSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/thor-landscape.jpg",
+      detail: '2017 • Action, Fantasy • 1hr 40m',
+      badges: [
+        'PG-13', 'CC', '4K'
+      ]
     },
   ]
 
@@ -84,7 +96,7 @@ export default function Home() {
               title="New Releases"
             >
               {videos.map((video, index) => {
-                return <VideoTallCard key={index} posterSrc={video.src} tag={video?.tag ?? undefined} logoSrc={video.logoSrc} landscapeSrc={video.landscapeSrc}/>
+                return <VideoTallCard badges={video.badges} detail={video.detail} key={index} posterSrc={video.src} tag={video?.tag ?? undefined} logoSrc={video.logoSrc} landscapeSrc={video.landscapeSrc}/>
               })}
             </VideoStrip>
           </div>

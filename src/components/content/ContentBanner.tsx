@@ -74,13 +74,14 @@ const ContentBanner = ({
                             src={content[selectedIndex]?.logoSrc ?? ""} 
                             alt={`${content[selectedIndex]?.title ?? 'Unknown'} Logo`}
                             className="w-full h-auto object-contain mb-3 max-w-[50vw] md:max-w-[40vw]" 
+                            loading="lazy"
                         />
                  
                         {content[selectedIndex]?.tags && <div className="flex gap-1 mb-2">
                             {content[selectedIndex]?.tags?.map((tag, index) => (
                             <span 
                                 key={index} 
-                                className="px-2 py-1 text-sm font-large rounded-md bg-gray-900 text-white dark:text-gray-300 backdrop-blur-md self-center"
+                                className="px-2 py-1 text-sm font-large rounded-md bg-white dark:bg-gray-900 text-black dark:text-white dark:text-gray-300 backdrop-blur-md self-center"
                             >
                                 {tag}
                             </span>
