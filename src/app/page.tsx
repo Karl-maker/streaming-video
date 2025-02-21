@@ -25,6 +25,26 @@ export default function Home() {
       src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-lkloeppel-466685.jpg"
     }
   ]
+
+  const videosWatched = [
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-cottonbro-7792259.jpg",
+      progress: 32
+    },
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-lkloeppel-466685.jpg",
+      progress: 84
+    },
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-cottonbro-7792259.jpg",
+      progress: 24,
+      tag: 'NEW MOVIE'
+    },
+    {
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/images/pexels-lkloeppel-466685.jpg",
+      progress: 50
+    }
+  ]
   const item : ContentBannerPreviewInput[] = [
     {
       id: "32hd02y-1udh1-1d32ewwe",
@@ -58,8 +78,8 @@ export default function Home() {
         <ContentBanner content={[...item]} />
           <div className="flex flex-col gap-4">
             <VideoStrip 
-              videos={[...videos, ...videos, ...videos]} 
-              title="Featured"
+              videos={videosWatched} 
+              title="Continue Watching"
             />
 
             <VideoStrip 
