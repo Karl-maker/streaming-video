@@ -15,7 +15,7 @@ export default function Home() {
       tag: 'NEW EPISODES'
     },
     {
-      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-poster.jpg",
+      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-poster.webp",
       logoSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-logo.svg.png",
       landscapeSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-landscape.jpg",
     },
