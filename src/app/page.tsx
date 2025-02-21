@@ -4,8 +4,13 @@ import ContentBanner from "@/components/content/ContentBanner";
 import VideoCard from "@/components/content/VideoCard";
 import VideoStrip from "@/components/content/VideoStrip";
 import VideoTallCard from "@/components/content/VideoTallCard";
+import HeaderContent from "@/components/layout/HeaderContent";
 import { ContentBannerPreviewInput } from "@/types/content.banner.types";
-
+import { AiFillHome } from "@react-icons/all-files/ai/AiFillHome";
+import { RiMovie2Fill } from "@react-icons/all-files/ri/RiMovie2Fill";
+import { FaSearch } from "@react-icons/all-files/fa/FaSearch";
+import { FaList } from "@react-icons/all-files/fa/FaList";
+import FooterContent from "@/components/layout/FooterContent";
 export default function Home() {
   const videos = [
     {
@@ -82,6 +87,26 @@ export default function Home() {
   return (
     <div className="">
       <main className="">
+        <HeaderContent 
+          logoSrc={"https://4m4you.com/wp-content/uploads/2020/06/logo-placeholder.png"} 
+          items={[{
+            icon: <AiFillHome />,
+            name: 'Home',
+            path: '/'
+          },{
+            icon: <FaSearch />,
+            name: 'Search',
+            path: '/search'
+          },{
+            icon: <RiMovie2Fill />,
+            name: 'Movies',
+            path: '/movies'
+          }, {
+            icon: <FaList />,
+            name: 'Watchlist',
+            path: '/watchlist'
+          }]}        
+        />
         <ContentBanner content={[...item]} />
           <div className="flex flex-col gap-4 mt-2">
             <VideoStrip 
@@ -102,7 +127,33 @@ export default function Home() {
           </div>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-
+            <FooterContent 
+              companyName={"Caribbean Streaming"} 
+              links={[
+                {
+                  title: "Privacy Policy",
+                  url: '/privacy'
+                },
+                {
+                  title: "Terms and Agreement",
+                  url: '/terms'
+                },
+                {
+                  title: "About",
+                  url: '/about'
+                },
+                {
+                  title: "Contact",
+                  url: '/contact'
+                },
+                {
+                  title: "Help",
+                  url: '/help'
+                }
+              ]} 
+              address={"43 Willburg St. Port of Spain, Trinidad and Tobago"} 
+              logoSrc={"https://4m4you.com/wp-content/uploads/2020/06/logo-placeholder.png"}            
+            />
       </footer>
     </div>
   );
