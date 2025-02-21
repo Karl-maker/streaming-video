@@ -1,6 +1,6 @@
 import { VideoCardParams } from "@/types/video.card.types";
 
-const VideoCard = ({ src, progress, tag }: VideoCardParams) => {
+const VideoCard = ({ lowerBage, src, progress, tag }: VideoCardParams) => {
     const isValidProgress = typeof progress === "number" && progress > 0 && progress <= 100;
 
     return (
@@ -21,15 +21,38 @@ const VideoCard = ({ src, progress, tag }: VideoCardParams) => {
                 </div>
             )}
 
+
             {/* Progress Bar */}
+
+            {/* Always render lowerBadge */}
+            <div className="relative">
+            {/* Always render lowerBadge */}
+            {lowerBage && (
+                <div
+                    className={`absolute text-white font-bold text-xs font-semibold px-2 py-0.5 rounded-md transition-all duration-300
+                        ${isValidProgress ? "bottom-5 left-3" : "bottom-2 left-2"}
+                        ${lowerBage === "LIVE" ? "bg-red-600" : "bg-blue-600"}
+                    `}
+                >
+                    {lowerBage}
+                </div>
+            )}
+
+            {/* Render progress bar only if isValidProgress */}
             {isValidProgress && (
                 <div className="absolute bottom-2 left-3 right-3 h-2 bg-gray-800/60 rounded-full">
                     <div
-                        className="h-full bg-gradient-to-r from-white to-white rounded-full transition-all duration-300"
+                        className={`h-full rounded-full transition-all duration-300 ${
+                            lowerBage === "LIVE" ? "bg-red-600" : "bg-gradient-to-r from-white to-white"
+                        }`}
                         style={{ width: `${progress}%` }}
                     />
                 </div>
             )}
+        </div>
+
+
+         
         </div>
     );
 };

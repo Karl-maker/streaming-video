@@ -4,6 +4,7 @@ export type VideoCardParams = {
     src: string;
     progress?: number;
     tag?: string;
+    lowerBage?: string;
 }
 
 export type VideoTallCardParams = {
@@ -13,4 +14,10 @@ export type VideoTallCardParams = {
     logoSrc: string;
     detail?: string;
     badges?: (string | ReactNode)[];
+}
+
+export type VideoCardExtraContentParams = {
+    title: string;
+    time: string;
+    details: string;
 }

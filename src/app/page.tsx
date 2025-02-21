@@ -11,6 +11,8 @@ import { RiMovie2Fill } from "@react-icons/all-files/ri/RiMovie2Fill";
 import { FaSearch } from "@react-icons/all-files/fa/FaSearch";
 import { FaList } from "@react-icons/all-files/fa/FaList";
 import FooterContent from "@/components/layout/FooterContent";
+import { VideoCardExtraContentParams, VideoCardParams } from "@/types/video.card.types";
+import VideoCardWithInfo from "@/components/content/VideoCardWithInfo";
 export default function Home() {
   const videos = [
     {
@@ -52,6 +54,24 @@ export default function Home() {
       src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/naruto-landscape.jpg",
       progress: 20,
       tag: 'NEW EPISODE'
+    }
+  ]
+
+  const sportsVideos : (VideoCardExtraContentParams & VideoCardParams)[] = [
+    {
+      src: "https://images6.alphacoders.com/648/648506.jpg",
+      progress: 98,
+      lowerBage: 'LIVE',
+      title: 'Chelsea vs Madrid',
+      time: 'Started 2 hours ago',
+      details: 'FIFA • 2025 • Premere League'
+    },
+    {
+      src: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/rockcms/2024-08/240804-Noah-Lyles-vl-410p-037efa.jpg",
+      lowerBage: "Upcoming",
+      title: `Men's 100m Finals`,
+      time: 'Summer - July 23rd',
+      details: '2025 • IAAF World Championships',
     }
   ]
 
@@ -122,6 +142,14 @@ export default function Home() {
             >
               {videos.map((video, index) => {
                 return <VideoTallCard badges={video.badges} detail={video.detail} key={index} posterSrc={video.src} tag={video?.tag ?? undefined} logoSrc={video.logoSrc} landscapeSrc={video.landscapeSrc}/>
+              })}
+            </VideoStrip>
+
+            <VideoStrip 
+              title="Sports Today"
+            >
+              {sportsVideos.map((video, index) => {
+                return <VideoCardWithInfo {...video} key={index} />
               })}
             </VideoStrip>
           </div>
