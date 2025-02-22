@@ -31,7 +31,7 @@ const ContentBanner = ({
                     {content[selectedIndex]?.previewSrc && <AudioButton isMuted={isMuted} toggleMute={toggleMute} />}
                 </div>
                 
-                <div className="relative w-full h-[40vh] sm:h-[40vh] md:h-[70vh] overflow-hidden fade-mask">
+                <div className="relative w-full h-[60vh] sm:h-[60vh] md:h-[70vh] overflow-hidden fade-mask">
                     {content[selectedIndex]?.previewSrc ? (
                         <>
                             <video 
