@@ -1,41 +1,58 @@
 'use client'
 
+import { useRouter } from 'next/navigation';
 import ContentBanner from "@/components/content/ContentBanner";
 import VideoCard from "@/components/content/VideoCard";
 import VideoStrip from "@/components/content/VideoStrip";
 import VideoTallCard from "@/components/content/VideoTallCard";
 import { ContentBannerPreviewInput } from "@/types/content.banner.types";
-import { VideoCardExtraContentParams, VideoCardParams } from "@/types/video.card.types";
+import { VideoCardExtraContentParams, VideoCardParams, VideoTallCardParams } from "@/types/video.card.types";
 import VideoCardWithInfo from "@/components/content/VideoCardWithInfo";
 export default function Home() {
-  const videos = [
+  const router = useRouter();
+  const handlePlay = () => {
+    router.push('/play');
+  }
+  const videos : VideoTallCardParams[] = [
     {
-      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/naruto-poster.jpg",
+      id: '1',
+      posterSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/naruto-poster.jpg",
       logoSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/naruto-logo.png",
       landscapeSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/naruto-landscape.png",
       tag: 'NEW EPISODES',
       detail: '2024 • Action, Fantasy • 25m',
       badges: [
         'PG-13', 'CC', 'HD'
-      ]
+      ],
+      onWatchNow: (id: string) => {
+        handlePlay()
+      }
     },
     {
-      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-poster.webp",
+      id: '1',
+      posterSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-poster.webp",
       logoSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-logo.svg.png",
       landscapeSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-landscape.jpg",
       detail: '2023 • Action, Crime • 2hr 10m',
       badges: [
         '16+', 'CC', '4K'
-      ]
+      ],
+      onWatchNow: (id: string) => {
+        handlePlay()
+      }
     },
     {
-      src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/thor-poster.jpg",
+      id: '1',
+      posterSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/thor-poster.jpg",
       logoSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/thor-logo.webp",
       landscapeSrc: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/thor-landscape.jpg",
       detail: '2017 • Action, Fantasy • 1hr 40m',
       badges: [
         'PG-13', 'CC', '4K'
-      ]
+      ],
+      onWatchNow: (id: string) => {
+        handlePlay()
+      }
     },
   ]
 
@@ -43,11 +60,17 @@ export default function Home() {
     {
       src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/batman-landscape.jpg",
       progress: 50,
+      onWatch: () => {
+        handlePlay()
+      }
     },
     {
       src: "https://video-caribbean.s3.us-east-2.amazonaws.com/public/movies/naruto-landscape.jpg",
       progress: 20,
-      tag: 'NEW EPISODE'
+      tag: 'NEW EPISODE',
+      onWatch: () => {
+        handlePlay()
+      }
     }
   ]
 
@@ -58,7 +81,10 @@ export default function Home() {
       lowerBage: 'LIVE',
       title: 'Chelsea vs Madrid',
       time: 'Started 2 hours ago',
-      details: 'FIFA • 2025 • Premere League'
+      details: 'FIFA • 2025 • Premere League',
+      onWatch: () => {
+        handlePlay()
+      }
     },
     {
       src: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/rockcms/2024-08/240804-Noah-Lyles-vl-410p-037efa.jpg",
@@ -66,6 +92,9 @@ export default function Home() {
       title: `Men's 100m Finals`,
       time: 'Summer - July 23rd',
       details: '2025 • IAAF World Championships',
+      onWatch: () => {
+        handlePlay()
+      }
     }
   ]
 
@@ -83,7 +112,7 @@ export default function Home() {
       ],
       details: '2024 • Action, Adventure • 2h 32m',
       onWatchNow: (id) => {
-
+        handlePlay()
       }
     },
     {
@@ -98,7 +127,7 @@ export default function Home() {
       ],
       details: '2024 • Action, Fantasy • 1h 52m',
       onWatchNow: (id) => {
-        
+        handlePlay()
       }
     }
   ];
@@ -120,7 +149,7 @@ export default function Home() {
               title="New Releases"
             >
               {videos.map((video, index) => {
-                return <VideoTallCard badges={video.badges} detail={video.detail} key={index} posterSrc={video.src} tag={video?.tag ?? undefined} logoSrc={video.logoSrc} landscapeSrc={video.landscapeSrc}/>
+                return <VideoTallCard {...video} key={index}/>
               })}
             </VideoStrip>
 

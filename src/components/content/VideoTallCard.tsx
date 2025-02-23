@@ -1,7 +1,7 @@
 import { VideoTallCardParams } from "@/types/video.card.types";
 import WatchNowButton from "./WatchNowButton";
 
-const VideoTallCard = ({ posterSrc, logoSrc, tag, landscapeSrc, detail, badges }: VideoTallCardParams) => {
+const VideoTallCard = ({ id, posterSrc, logoSrc, tag, landscapeSrc, detail, badges, onWatchNow }: VideoTallCardParams) => {
     return (
         <div className="relative w-80 h-145 rounded-xl overflow-hidden transition-width duration-300 ease-in-out group sm:hover:w-[50rem] border-2 border-transparent hover:shadow-lg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,7 +53,7 @@ const VideoTallCard = ({ posterSrc, logoSrc, tag, landscapeSrc, detail, badges }
                         <p className="text-xs font-large text-white">{detail}</p>
                 </div>}
                 <WatchNowButton onClick={function (): void {
-                    throw new Error("Function not implemented.");
+                    if (onWatchNow) onWatchNow(id)
                 }} />
             </div>
         </div>
