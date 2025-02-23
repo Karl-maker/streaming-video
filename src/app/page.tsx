@@ -13,6 +13,7 @@ import { FaList } from "@react-icons/all-files/fa/FaList";
 import FooterContent from "@/components/layout/FooterContent";
 import { VideoCardExtraContentParams, VideoCardParams } from "@/types/video.card.types";
 import VideoCardWithInfo from "@/components/content/VideoCardWithInfo";
+import VideoPlayer from "@/components/player/VideoPlayer";
 export default function Home() {
   const videos = [
     {
@@ -152,7 +153,7 @@ export default function Home() {
                 return <VideoCardWithInfo {...video} key={index} />
               })}
             </VideoStrip>
-
+            {/* <VideoPlayer src='https://video-caribbean.s3.us-east-2.amazonaws.com/public/videos/Alone+in+New+York+_+Short+Film+(2018).mp4' title="Test" shortDescription='Testing the test'/> */}
           </div>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
