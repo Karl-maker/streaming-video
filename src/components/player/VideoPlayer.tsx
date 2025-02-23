@@ -54,10 +54,16 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
   };
 
   useEffect(() => {
-    const handleFullscreenChange = () => setIsFullscreen(!!document.fullscreenElement);
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
     document.addEventListener("fullscreenchange", handleFullscreenChange);
-    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
   }, []);
+  
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
