@@ -4,6 +4,10 @@ import { VideoPlayerParams } from "@/types/video.player.types";
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import secondsToMinutes from "@/utils/seconds.to.minutes.util";
 import { Fullscreen, Minimize } from "lucide-react";
+import { MdPlayArrow } from "@react-icons/all-files/md/MdPlayArrow";
+import { MdPause } from "@react-icons/all-files/md/MdPause";
+import { MdForward10 } from "@react-icons/all-files/md/MdForward10";
+import { MdReplay10 } from "@react-icons/all-files/md/MdReplay10";
 
 const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -20,6 +24,21 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
     if (videoRef.current) {
       videoRef.current.paused ? videoRef.current.play() : videoRef.current.pause();
     }
+    resetHideControls();
+  };
+
+  const fastForward = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime += 10;
+    }
+    resetHideControls();
+  };
+
+  const rewind = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime -= 10;
+    }
+    resetHideControls();
   };
 
   const toggleFullscreen = () => {
@@ -31,6 +50,7 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
       document.exitFullscreen();
       setIsFullscreen(false);
     }
+    resetHideControls();
   };
 
   useEffect(() => {
@@ -116,29 +136,44 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
               />
               {showPreview && (
                 <div
-                className="absolute bottom-6 p-2 bg-black/80 text-white text-xs rounded-md transition-transform"
-                style={{ 
-                  left: `${Math.min(previewPosition, window.innerWidth - 100)}px`, 
-                  transform: "translateX(-50%)",
-                }}
-              >
-                <div className="w-40 md:w-80"> 
-                  <video 
-                    ref={previewVideoRef} 
-                    src={src} 
-                    className="w-full rounded-md" 
-                    muted 
-                  />
-                  <div className="text-center text-lg mt-1"> 
-                    {secondsToMinutes(previewTime)}
+                  className="absolute bottom-6 p-2 bg-black/80 text-white text-xs rounded-md transition-transform"
+                  style={{ 
+                    left: `${Math.min(previewPosition, window.innerWidth - 100)}px`, 
+                    transform: "translateX(-50%)",
+                  }}
+                >
+                  <div className="w-40 md:w-80"> 
+                    <video 
+                      ref={previewVideoRef} 
+                      src={src} 
+                      className="w-full rounded-md" 
+                      muted 
+                    />
+                    <div className="text-center text-lg mt-1"> 
+                      {secondsToMinutes(previewTime)}
+                    </div>
                   </div>
                 </div>
-              </div>
               )}
             </div>
             <span className="text-lg ml-3">{secondsToMinutes(time.duration - time.elapsed)}</span>
             <button onClick={toggleFullscreen} className="ml-3 p-2">
               {isFullscreen ? <Minimize size={30} /> : <Fullscreen size={30} />}
+            </button>
+          </div>
+        </div>
+      )}
+      {showControls && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="flex space-x-10 pointer-events-auto">
+            <button onClick={rewind} className="text-white text-7xl opacity-80 hover:opacity-100">
+              <MdReplay10 />
+            </button>
+            <button onClick={togglePlay} className="text-white text-6xl opacity-80 hover:opacity-100">
+              {videoRef.current?.paused ? <MdPlayArrow /> : <MdPause />}
+            </button>
+            <button onClick={fastForward} className="text-white text-7xl opacity-80 hover:opacity-100">
+              <MdForward10 />
             </button>
           </div>
         </div>
