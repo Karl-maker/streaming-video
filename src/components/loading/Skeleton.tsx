@@ -1,5 +1,3 @@
-import React, { ReactNode } from "react";
-
 const SkeletonLoader = () => {
   return (
     <div className="relative w-full h-full bg-gray-300 dark:bg-gray-700 overflow-hidden rounded-md">
