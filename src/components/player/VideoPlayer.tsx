@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+
 "use client";
 
 import { VideoPlayerParams } from "@/types/video.player.types";
