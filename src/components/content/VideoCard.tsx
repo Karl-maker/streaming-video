@@ -14,9 +14,11 @@ const VideoCard = ({ lowerBage, src, progress, tag, onWatch }: VideoCardParams) 
     }
 
     return (
-        <div className="relative w-80 h-44 rounded-xl overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-transparent dark:hover:border-white hover:shadow-md" onClick={() => {
-            if(onWatch) onWatch();
-        }}>
+        <div className="relative w-80 h-44 rounded-xl overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105 border-2 border-transparent dark:hover:border-white hover:shadow-md backdrop-fix rounded-mask" onClick={() => {
+                if(onWatch) onWatch();
+            }}
+            style={{ willChange: "transform, border-radius" }}
+        >
             {!isImageLoaded && <SkeletonLoader />}
             <Image
                 src={src}

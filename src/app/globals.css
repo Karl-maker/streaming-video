@@ -41,6 +41,20 @@ body {
   background-size: 200% 100%;
 }
 
+.backdrop-fix {
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.rounded-mask {
+  -webkit-mask-image: radial-gradient(circle, white 98%, transparent 100%);
+  mask-image: radial-gradient(circle, white 98%, transparent 100%);
+}
+
+
+
 
 
 

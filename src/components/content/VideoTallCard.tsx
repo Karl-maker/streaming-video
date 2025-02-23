@@ -19,10 +19,13 @@ const VideoTallCard = ({ id, posterSrc, logoSrc, tag, landscapeSrc, detail, badg
     }
 
     return (
-        <div className="relative w-80 h-145 rounded-xl overflow-hidden transition-width duration-300 ease-in-out group sm:hover:w-[50rem] border-2 border-transparent hover:shadow-lg">
+        <div 
+            className="relative w-80 h-145 rounded-xl overflow-hidden transition-width duration-300 ease-in-out group sm:hover:w-[50rem] border-2 border-transparent hover:shadow-lg backdrop-fix rounded-mask"
+            style={{ willChange: "transform, border-radius" }}
+        >
             {landscapeSrc && (
                 <>
-                    {!isWideImageLoaded && <SkeletonLoader />}
+                    {!isWideImageLoaded && <SkeletonLoader className="group-hover:opacity-100 hidden sm:block"/>}
                     <Image
                         style={
                             {
