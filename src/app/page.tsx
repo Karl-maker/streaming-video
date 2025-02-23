@@ -24,7 +24,7 @@ export default function Home() {
       badges: [
         'PG-13', 'CC', 'HD'
       ],
-      onWatchNow: (id: string) => {
+      onWatchNow: () => {
         handlePlay()
       }
     },
@@ -37,7 +37,7 @@ export default function Home() {
       badges: [
         '16+', 'CC', '4K'
       ],
-      onWatchNow: (id: string) => {
+      onWatchNow: () => {
         handlePlay()
       }
     },
@@ -50,7 +50,7 @@ export default function Home() {
       badges: [
         'PG-13', 'CC', '4K'
       ],
-      onWatchNow: (id: string) => {
+      onWatchNow: () => {
         handlePlay()
       }
     },
@@ -111,7 +111,7 @@ export default function Home() {
         'PG-13', 'CC', '4K'
       ],
       details: '2024 • Action, Adventure • 2h 32m',
-      onWatchNow: (id) => {
+      onWatchNow: () => {
         handlePlay()
       }
     },
@@ -126,7 +126,7 @@ export default function Home() {
         'PG-13', 'CC', '4K'
       ],
       details: '2024 • Action, Fantasy • 1h 52m',
-      onWatchNow: (id) => {
+      onWatchNow: () => {
         handlePlay()
       }
     }
