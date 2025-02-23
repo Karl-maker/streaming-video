@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import FooterContent from "@/components/layout/FooterContent";
+import HeaderContent from "@/components/layout/HeaderContent";
+import { AiFillHome } from "@react-icons/all-files/ai/AiFillHome";
+import { RiMovie2Fill } from "@react-icons/all-files/ri/RiMovie2Fill";
+import { FaSearch } from "@react-icons/all-files/fa/FaSearch";
+import { FaList } from "@react-icons/all-files/fa/FaList";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -22,8 +28,59 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${inter.variable} ${inter.variable} antialiased`}
-      >
-        {children}
+      > 
+        <main className="">
+          <HeaderContent
+            logoSrc={"https://4m4you.com/wp-content/uploads/2020/06/logo-placeholder.png"} 
+            items={[{
+              icon: <AiFillHome />,
+              name: 'Home',
+              path: '/'
+            },{
+              icon: <FaSearch />,
+              name: 'Search',
+              path: '/search'
+            },{
+              icon: <RiMovie2Fill />,
+              name: 'Movies',
+              path: '/movies'
+            }, {
+              icon: <FaList />,
+              name: 'Watchlist',
+              path: '/watchlist'
+            }]}        
+          />
+          {children}
+        </main>
+        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+            <FooterContent 
+              companyName={"Caribbean Streaming"} 
+              links={[
+                {
+                  title: "Privacy Policy",
+                  url: '/privacy'
+                },
+                {
+                  title: "Terms and Agreement",
+                  url: '/terms'
+                },
+                {
+                  title: "About",
+                  url: '/about'
+                },
+                {
+                  title: "Contact",
+                  url: '/contact'
+                },
+                {
+                  title: "Help",
+                  url: '/help'
+                }
+              ]} 
+              address={"43 Willburg St. Port of Spain, Trinidad and Tobago"} 
+              logoSrc={"https://4m4you.com/wp-content/uploads/2020/06/logo-placeholder.png"}            
+            />
+      </footer>
       </body>
     </html>
   );

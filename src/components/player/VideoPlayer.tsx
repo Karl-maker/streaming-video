@@ -65,7 +65,7 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
   return (
     <div
       id="video-player-container"
-      className={`relative w-full overflow-hidden ${isFullscreen ? "flex items-center justify-center h-screen bg-black" : ""}`}
+      className={`relative w-full h-full justify-center overflow-hidden bg-black flex items-center ${isFullscreen ? "h-screen" : ""}`}
       onMouseMove={resetHideControls}
       onMouseLeave={() => setShowControls(false)}
     >
@@ -115,27 +115,25 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
                 className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
               />
               {showPreview && (
-     <div
-     className="absolute bottom-6 p-2 bg-black/80 text-white text-xs rounded-md transition-transform"
-     style={{ 
-       left: `${Math.min(previewPosition, window.innerWidth - 100)}px`, 
-       transform: "translateX(-50%)",
-     }}
-   >
-     <div className="w-40 md:w-80"> {/* Responsive widths for different screen sizes */}
-       <video 
-         ref={previewVideoRef} 
-         src={src} 
-         className="w-full rounded-md" // Use w-full to make the video take full width of the container
-         muted 
-       />
-       <div className="text-center text-lg mt-1"> 
-         {secondsToMinutes(previewTime)}
-       </div>
-     </div>
-   </div>
-   
-
+                <div
+                className="absolute bottom-6 p-2 bg-black/80 text-white text-xs rounded-md transition-transform"
+                style={{ 
+                  left: `${Math.min(previewPosition, window.innerWidth - 100)}px`, 
+                  transform: "translateX(-50%)",
+                }}
+              >
+                <div className="w-40 md:w-80"> 
+                  <video 
+                    ref={previewVideoRef} 
+                    src={src} 
+                    className="w-full rounded-md" 
+                    muted 
+                  />
+                  <div className="text-center text-lg mt-1"> 
+                    {secondsToMinutes(previewTime)}
+                  </div>
+                </div>
+              </div>
               )}
             </div>
             <span className="text-lg ml-3">{secondsToMinutes(time.duration - time.elapsed)}</span>

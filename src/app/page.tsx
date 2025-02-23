@@ -1,19 +1,12 @@
-"use client"
+'use client'
 
 import ContentBanner from "@/components/content/ContentBanner";
 import VideoCard from "@/components/content/VideoCard";
 import VideoStrip from "@/components/content/VideoStrip";
 import VideoTallCard from "@/components/content/VideoTallCard";
-import HeaderContent from "@/components/layout/HeaderContent";
 import { ContentBannerPreviewInput } from "@/types/content.banner.types";
-import { AiFillHome } from "@react-icons/all-files/ai/AiFillHome";
-import { RiMovie2Fill } from "@react-icons/all-files/ri/RiMovie2Fill";
-import { FaSearch } from "@react-icons/all-files/fa/FaSearch";
-import { FaList } from "@react-icons/all-files/fa/FaList";
-import FooterContent from "@/components/layout/FooterContent";
 import { VideoCardExtraContentParams, VideoCardParams } from "@/types/video.card.types";
 import VideoCardWithInfo from "@/components/content/VideoCardWithInfo";
-import VideoPlayer from "@/components/player/VideoPlayer";
 export default function Home() {
   const videos = [
     {
@@ -88,7 +81,10 @@ export default function Home() {
       tags: [
         'PG-13', 'CC', '4K'
       ],
-      details: '2024 • Action, Adventure • 2h 32m'
+      details: '2024 • Action, Adventure • 2h 32m',
+      onWatchNow: (id) => {
+
+      }
     },
     {
       id: "thor-dark-world-id",
@@ -100,34 +96,16 @@ export default function Home() {
       tags: [
         'PG-13', 'CC', '4K'
       ],
-      details: '2024 • Action, Fantasy • 1h 52m'
+      details: '2024 • Action, Fantasy • 1h 52m',
+      onWatchNow: (id) => {
+        
+      }
     }
   ];
   
 
   return (
     <div className="">
-      <main className="">
-        <HeaderContent 
-          logoSrc={"https://4m4you.com/wp-content/uploads/2020/06/logo-placeholder.png"} 
-          items={[{
-            icon: <AiFillHome />,
-            name: 'Home',
-            path: '/'
-          },{
-            icon: <FaSearch />,
-            name: 'Search',
-            path: '/search'
-          },{
-            icon: <RiMovie2Fill />,
-            name: 'Movies',
-            path: '/movies'
-          }, {
-            icon: <FaList />,
-            name: 'Watchlist',
-            path: '/watchlist'
-          }]}        
-        />
         <ContentBanner content={[...item]} />
           <div className="flex flex-col gap-4 mt-2">
             <VideoStrip 
@@ -153,38 +131,7 @@ export default function Home() {
                 return <VideoCardWithInfo {...video} key={index} />
               })}
             </VideoStrip>
-            <VideoPlayer src='https://video-caribbean.s3.us-east-2.amazonaws.com/public/videos/Alone+in+New+York+_+Short+Film+(2018).mp4' title="Test" shortDescription='Testing the test'/>
           </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-            <FooterContent 
-              companyName={"Caribbean Streaming"} 
-              links={[
-                {
-                  title: "Privacy Policy",
-                  url: '/privacy'
-                },
-                {
-                  title: "Terms and Agreement",
-                  url: '/terms'
-                },
-                {
-                  title: "About",
-                  url: '/about'
-                },
-                {
-                  title: "Contact",
-                  url: '/contact'
-                },
-                {
-                  title: "Help",
-                  url: '/help'
-                }
-              ]} 
-              address={"43 Willburg St. Port of Spain, Trinidad and Tobago"} 
-              logoSrc={"https://4m4you.com/wp-content/uploads/2020/06/logo-placeholder.png"}            
-            />
-      </footer>
     </div>
   );
 }
