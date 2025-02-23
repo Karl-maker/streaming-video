@@ -94,6 +94,7 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
       <video
         ref={videoRef}
         src={src}
+        playsInline
         onClick={togglePlay}
         onLoadedMetadata={() => setTime((prev) => ({ ...prev, duration: videoRef.current?.duration || 0 }))}
         onTimeUpdate={handleTimeUpdate}
@@ -148,6 +149,7 @@ const VideoPlayer = ({ src, title, shortDescription }: VideoPlayerParams) => {
                     <video 
                       ref={previewVideoRef} 
                       src={src} 
+                      playsInline
                       className="w-full rounded-md" 
                       muted 
                     />
