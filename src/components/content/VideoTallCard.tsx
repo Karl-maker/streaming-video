@@ -1,24 +1,54 @@
+"use client";
+
 import { VideoTallCardParams } from "@/types/video.card.types";
 import WatchNowButton from "./WatchNowButton";
+import { useState } from "react";
+import Image from "next/image";
+import SkeletonLoader from "../loading/Skeleton";
 
 const VideoTallCard = ({ id, posterSrc, logoSrc, tag, landscapeSrc, detail, badges, onWatchNow }: VideoTallCardParams) => {
+    const [isWideImageLoaded, setIsWideImageLoaded] = useState(false);
+    const [isPortraitImageLoaded, setIsPortraitImageLoaded] = useState(false);
+
+    const handleWideImageLoad = () => {
+        setIsWideImageLoaded(true);
+    }
+
+    const handlePortraitImageLoad = () => {
+        setIsPortraitImageLoaded(true);
+    }
+
     return (
         <div className="relative w-80 h-145 rounded-xl overflow-hidden transition-width duration-300 ease-in-out group sm:hover:w-[50rem] border-2 border-transparent hover:shadow-lg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             {landscapeSrc && (
-                <img
-                    src={landscapeSrc}
-                    alt="Background"
-                    loading="lazy"
-                    className="absolute w-full h-full object-cover opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 hidden sm:block" // Hide on small screens
-                />
+                <>
+                    {!isWideImageLoaded && <SkeletonLoader />}
+                    <Image
+                        style={
+                            {
+                                zIndex: '0'
+                            }
+                        }
+                        src={landscapeSrc}
+                        alt="Background"
+                        layout="fill"
+                        quality={100}
+                        onLoad={handleWideImageLoad}
+                        className={`absolute w-full h-full object-cover opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 hidden sm:block ${!isWideImageLoaded ? 'collapse' : ''}`}
+                    />
+                </>
             )}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-                loading="lazy"
+            {!isPortraitImageLoaded && <SkeletonLoader />}
+            <Image
+                style={{
+                    zIndex: '-1'
+                }}
                 src={posterSrc}
                 alt={`Video ${posterSrc}`}
-                className="w-full h-full object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-70 sm:group-hover:opacity-100" // Keep visible on small screens and fade on hover for larger screens
+                layout="fill"
+                quality={100}
+                onLoad={handlePortraitImageLoad}
+                className={`w-full h-full object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-70 sm:group-hover:opacity-100 ${!isPortraitImageLoaded ? 'collapse' : ''}`}
             />
 
             <div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent"></div>

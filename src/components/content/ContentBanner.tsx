@@ -5,6 +5,8 @@ import { useRef, useState } from "react";
 import WatchNowButton from "./WatchNowButton";
 import BubbleSelector from "./BubbleSelector";
 import AudioButton from "./AudioButton";
+import SkeletonLoader from "../loading/Skeleton";
+import Image from "next/image";
 
 const ContentBanner = ({
     content,
@@ -12,7 +14,8 @@ const ContentBanner = ({
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
-    
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
+
     const videoRef = useRef<HTMLVideoElement>(null);
 
     const toggleMute = (): void => {
@@ -21,6 +24,10 @@ const ContentBanner = ({
             setIsMuted(!isMuted);
         }
     };
+
+    const handleFinishLoading = () => {
+        setIsImageLoaded(true);
+    }
 
     if(typeof content  === 'undefined') return <></>;
 
@@ -46,25 +53,35 @@ const ContentBanner = ({
                                 disableRemotePlayback
                             />
                             {(!isVideoLoaded && (content[selectedIndex])) && (<>
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img 
+                                {!isImageLoaded && <SkeletonLoader />}
+                                <Image 
                                     id="content-banner-main-img"
                                     src={content[selectedIndex]?.imageSrc ?? ""}
                                     alt={content[selectedIndex]?.title ?? "No Banner Image"} 
-                                    className="w-full h-full object-cover"
-                                    loading="lazy"
+                                    className={`w-full h-full object-cover ${!isImageLoaded ? 'collapse' : ''}`}
+                                    onLoad={handleFinishLoading}
+                                    layout="fill"
+                                    quality={100}
                                 />
                                 </>
                             )}
                         </>
                     ) : (
-                        <>{content[selectedIndex]?.imageSrc && <img 
-                            src={content[selectedIndex]?.imageSrc ?? ""}
-                            alt={content[selectedIndex]?.title ?? "No Banner Image"} 
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                            onError={() => {}}
-                        />}</>
+                        <>{content[selectedIndex]?.imageSrc && 
+                            <>
+                                {!isImageLoaded && <SkeletonLoader />}
+                                <Image 
+                                    src={content[selectedIndex]?.imageSrc ?? ""}
+                                    alt={content[selectedIndex]?.title ?? "No Banner Image"} 
+                                    className={`w-full h-full object-cover ${!isImageLoaded ? 'collapse' : ''}`}
+                                    onError={() => {}}
+                                    onLoad={handleFinishLoading}
+                                    layout="fill"
+                                    quality={100}
+                                />
+                            </>
+                        }
+                        </>
                     )}
                 </div>
 
